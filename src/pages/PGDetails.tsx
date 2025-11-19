@@ -123,7 +123,7 @@ export default function PGDetails() {
       1: "1️⃣",
       2: "2️⃣",
       3: "3️⃣",
-      4: "4️��",
+      4: "4️⃣",
       5: "5️⃣",
       6: "6️⃣",
       7: "7️⃣",
@@ -314,13 +314,13 @@ export default function PGDetails() {
                     <p className="text-xs font-bold text-[var(--primary)] uppercase tracking-wider mb-2">
                       📅 Occupancy Type
                     </p>
-                    <div className="flex items-center gap-3">
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                       {getOccupancyIcons().map((icon, i) => (
-                        <span key={i} className="text-2xl">
+                        <span key={i} className="text-2xl flex-shrink-0">
                           {icon}
                         </span>
                       ))}
-                      <p className="font-bold text-dark/90 capitalize">
+                      <p className="font-bold text-dark/90 capitalize text-sm sm:text-base">
                         {pg.allowed_guest_type === "both"
                           ? "Daily & Monthly"
                           : pg.allowed_guest_type}
