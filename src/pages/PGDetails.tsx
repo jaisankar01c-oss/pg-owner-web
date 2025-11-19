@@ -266,65 +266,29 @@ export default function PGDetails() {
                     <span>⭐</span> Premium Facilities
                   </h3>
 
-                  {/* Horizontal Scrollable Facilities - 2 Rows Layout */}
-                  <div className="overflow-x-auto pb-2 -mx-2 px-2 scrollbar-hide">
-                    <div
-                      className="flex flex-col gap-3"
-                      style={{ minWidth: "min-content", width: "fit-content" }}
-                    >
-                      {/* Row 1 */}
-                      <div className="flex gap-3">
-                        {pg.facilities
-                          .slice(0, Math.ceil(pg.facilities.length / 2))
-                          .map((facility, idx) => (
-                            <div
-                              key={facility}
-                              className="group flex items-center gap-3 p-3 px-4 rounded-lg bg-gradient-to-r from-[var(--bgPrimary)] to-white border-2 border-[var(--primary)]/20 hover:border-[var(--primary)] hover:shadow-md transition-all duration-300 hover:-translate-y-1 cursor-pointer whitespace-nowrap"
-                              style={{ animationDelay: `${idx * 0.05}s` }}
-                            >
-                              <div className="text-lg group-hover:scale-125 transition-transform flex-shrink-0">
-                                ✓
-                              </div>
-                              <span className="text-dark/80 group-hover:text-dark font-semibold text-sm">
-                                {facility}
-                              </span>
-                            </div>
-                          ))}
-                      </div>
-
-                      {/* Row 2 - if more than half */}
-                      {pg.facilities.length > 1 && (
-                        <div className="flex gap-3">
-                          {pg.facilities
-                            .slice(Math.ceil(pg.facilities.length / 2))
-                            .map((facility, idx) => (
-                              <div
-                                key={facility}
-                                className="group flex items-center gap-3 p-3 px-4 rounded-lg bg-gradient-to-r from-[var(--bgPrimary)] to-white border-2 border-[var(--primary)]/20 hover:border-[var(--primary)] hover:shadow-md transition-all duration-300 hover:-translate-y-1 cursor-pointer whitespace-nowrap"
-                                style={{
-                                  animationDelay: `${
-                                    (Math.ceil(pg.facilities.length / 2) +
-                                      idx) *
-                                    0.05
-                                  }s`,
-                                }}
-                              >
-                                <div className="text-lg group-hover:scale-125 transition-transform flex-shrink-0">
-                                  ✓
-                                </div>
-                                <span className="text-dark/80 group-hover:text-dark font-semibold text-sm">
-                                  {facility}
-                                </span>
-                              </div>
-                            ))}
+                  {/* Horizontal Scrollable Facilities - Single Row on Mobile */}
+                  <div className="overflow-x-auto pb-4 -mx-2 px-2 scrollbar-hide">
+                    <div className="flex flex-wrap lg:flex-nowrap gap-3 w-max lg:w-full">
+                      {pg.facilities.map((facility, idx) => (
+                        <div
+                          key={facility}
+                          className="group flex items-center gap-3 p-3 px-4 rounded-lg bg-gradient-to-r from-[var(--bgPrimary)] to-white border-2 border-[var(--primary)]/20 hover:border-[var(--primary)] hover:shadow-md transition-all duration-300 hover:-translate-y-1 cursor-pointer whitespace-nowrap flex-shrink-0"
+                          style={{ animationDelay: `${idx * 0.05}s` }}
+                        >
+                          <div className="text-lg group-hover:scale-125 transition-transform flex-shrink-0">
+                            ✓
+                          </div>
+                          <span className="text-dark/80 group-hover:text-dark font-semibold text-sm">
+                            {facility}
+                          </span>
                         </div>
-                      )}
+                      ))}
                     </div>
                   </div>
 
-                  {/* Visual indicator for scrollable content */}
-                  {pg.facilities.length > 4 && (
-                    <p className="text-xs text-dark/50 mt-2 text-right">
+                  {/* Visual indicator for scrollable content on mobile */}
+                  {pg.facilities.length > 3 && (
+                    <p className="text-xs text-dark/50 mt-2 text-right lg:hidden">
                       ← Scroll for more →
                     </p>
                   )}
