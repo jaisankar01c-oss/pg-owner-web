@@ -394,7 +394,7 @@ export default function PGDetails() {
               Select the sharing type that suits you best
             </p>
           </div>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             {rent_details.map((rent, idx) => (
               <div
                 key={rent.id}
