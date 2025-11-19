@@ -123,7 +123,7 @@ export default function PGDetails() {
       1: "1️⃣",
       2: "2️⃣",
       3: "3️⃣",
-      4: "4️⃣",
+      4: "4️��",
       5: "5️⃣",
       6: "6️⃣",
       7: "7️⃣",
@@ -227,7 +227,7 @@ export default function PGDetails() {
       {/* Main Content */}
       <div className="container-max w-full max-w-6xl py-12 px-4">
         {/* PG Details Grid */}
-        <div className="grid gap-8 lg:grid-cols-3 mb-12">
+        <div className="grid gap-8 grid-cols-1 lg:grid-cols-3 mb-12">
           {/* Location & Facilities */}
           <div className="lg:col-span-2">
             <div className="card p-8 shadow-lg hover:shadow-2xl transition-all duration-500 animate-slide-up overflow-hidden relative">
