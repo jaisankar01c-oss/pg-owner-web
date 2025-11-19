@@ -266,9 +266,9 @@ export default function PGDetails() {
                     <span>⭐</span> Premium Facilities
                   </h3>
 
-                  {/* Horizontal Scrollable Facilities - Single Row on Mobile */}
-                  <div className="overflow-x-auto pb-4 -mx-2 px-2 scrollbar-hide">
-                    <div className="flex flex-wrap lg:flex-nowrap gap-3 w-max lg:w-full">
+                  {/* Horizontal Scrollable Facilities on Desktop, Grid on Mobile */}
+                  <div className="hidden lg:block overflow-x-auto pb-4 -mx-2 px-2 scrollbar-hide">
+                    <div className="flex flex-nowrap gap-3 w-max">
                       {pg.facilities.map((facility, idx) => (
                         <div
                           key={facility}
@@ -286,12 +286,25 @@ export default function PGDetails() {
                     </div>
                   </div>
 
-                  {/* Visual indicator for scrollable content on mobile */}
-                  {pg.facilities.length > 3 && (
-                    <p className="text-xs text-dark/50 mt-2 text-right lg:hidden">
-                      ← Scroll for more →
-                    </p>
-                  )}
+                  {/* Grid layout on Mobile */}
+                  <div className="lg:hidden">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                      {pg.facilities.map((facility, idx) => (
+                        <div
+                          key={facility}
+                          className="group flex items-start gap-2 p-3 rounded-lg bg-gradient-to-r from-[var(--bgPrimary)] to-white border-2 border-[var(--primary)]/20 hover:border-[var(--primary)] hover:shadow-md transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+                          style={{ animationDelay: `${idx * 0.05}s` }}
+                        >
+                          <div className="text-lg group-hover:scale-125 transition-transform flex-shrink-0 pt-0.5">
+                            ✓
+                          </div>
+                          <span className="text-dark/80 group-hover:text-dark font-semibold text-xs sm:text-sm line-clamp-2">
+                            {facility}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
