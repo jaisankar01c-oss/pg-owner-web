@@ -1,0 +1,33 @@
+:root{--primary:#fe8141;--primaryLight:#ffb995;--primaryDark:#c75b2a;--secondary:#9E9E9E;--tertiary:#343a40;--warning:#ff9800;--light:#f8f9fa;--white:#ffffff;--dark:#343a40;--gray:#9E9E9E;--danger:#f44336;--success:#4caf50;--successLight:#a5d6a7;--dangerLight:#ef9a9a;--dangerDark:#c62828;--warningDark:#f57c00;--successDark:#388e3c;--bgPrimary:#fff4ec;--bgPrimaryLight:#fcf8f5;--bgSuccess:#dffff2;--bgSuccessLight:#edfff8;--bgDanger:#ffeeee;--bgWarning:#fff8e5;--inputBorder:#CECECE;--teal50:#e6fbf9;--teal70:#e4f7f4;--gray50:#fafafa;--gray100:#f5f5f5;--gray200:#eeeeee;--gray300:#e0e0e0;--gray400:#bdbdbd;--gray500:#9e9e9e;--gray600:#757575;--gray700:#424242;--gray800:#424242;--gray900:#212121;--orange50:#fff3e0;--deepOrange50:#fbe9e7;--blue500:#2196f3;--yellow500:#fbc02d;--shadowPrimary:#fe8141;--primaryTabActive:#ffe6da}
+.bg-primary{background-color:var(--primary)}
+.bg-primary-light{background-color:var(--primaryLight)}
+.bg-primary-soft{background-color:var(--bgPrimary)}
+.text-primary{color:var(--primary)}
+.text-dark{color:var(--dark)}
+.text-tertiary{color:var(--tertiary)}
+.border-input{border-color:var(--inputBorder)}
+.btn-primary{background-color:var(--primary);color:var(--white);transition:all .2s ease-in-out;box-shadow:0 8px 20px rgba(254,129,65,.25)}
+.btn-primary:hover{background-color:var(--primaryDark);transform:translateY(-1px)}
+.badge-primary{background-color:var(--primaryTabActive);color:var(--primary);border-radius:9999px;padding:.125rem .5rem;font-weight:600}
+.card{background-color:var(--white);border-radius:1rem;box-shadow:0 10px 20px rgba(0,0,0,0.05)}
+.section-title{font-weight:800;color:var(--tertiary)}
+.container-max{max-width:1200px;margin-left:auto;margin-right:auto}
+.header-blur{backdrop-filter:saturate(180%) blur(8px);}
+
+/* Hero gradient using theme colors */
+.hero-gradient{background:radial-gradient(1200px 500px at 10% -20%, var(--primaryLight), transparent 60%),linear-gradient(180deg, var(--bgPrimary), var(--bgPrimaryLight));}
+
+/* Reveal on view */
+.reveal{opacity:0;transform:translateY(12px);transition:opacity .7s ease, transform .7s ease}
+.reveal.is-visible{opacity:1;transform:translateY(0)}
+
+/* Floating subtle animation */
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.float-slow{animation:float 6s ease-in-out infinite}
+
+/* Carousel layout helpers */
+.carousel{--slides:1}
+.carousel .slide{flex:0 0 calc(100%/var(--slides))}
+
+/* Make a section stretch to viewport width even inside centered container */
+.full-bleed{position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;width:100vw}
