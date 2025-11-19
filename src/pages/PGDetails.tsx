@@ -352,13 +352,13 @@ export default function PGDetails() {
                     <p className="text-xs font-bold text-[var(--primary)] uppercase tracking-wider mb-2">
                       🥘 Food Type
                     </p>
-                    <div className="flex items-center gap-3">
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                       {getFoodTypeIcons().map((icon, i) => (
-                        <span key={i} className="text-2xl">
+                        <span key={i} className="text-2xl flex-shrink-0">
                           {icon}
                         </span>
                       ))}
-                      <p className="font-bold text-dark/90 capitalize">
+                      <p className="font-bold text-dark/90 capitalize text-sm sm:text-base">
                         {pg.food_type === "both"
                           ? "Veg & Non-Veg"
                           : pg.food_type}
