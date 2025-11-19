@@ -227,7 +227,7 @@ export default function PGDetails() {
       {/* Main Content */}
       <div className="container-max w-full max-w-6xl py-12 px-4">
         {/* PG Details Grid */}
-        <div className="grid gap-8 lg:grid-cols-3 mb-12">
+        <div className="grid gap-8 grid-cols-1 lg:grid-cols-3 mb-12">
           {/* Location & Facilities */}
           <div className="lg:col-span-2">
             <div className="card p-8 shadow-lg hover:shadow-2xl transition-all duration-500 animate-slide-up overflow-hidden relative">
@@ -266,68 +266,45 @@ export default function PGDetails() {
                     <span>⭐</span> Premium Facilities
                   </h3>
 
-                  {/* Horizontal Scrollable Facilities - 2 Rows Layout */}
-                  <div className="overflow-x-auto pb-2 -mx-2 px-2 scrollbar-hide">
-                    <div
-                      className="flex flex-col gap-3"
-                      style={{ minWidth: "min-content", width: "fit-content" }}
-                    >
-                      {/* Row 1 */}
-                      <div className="flex gap-3">
-                        {pg.facilities
-                          .slice(0, Math.ceil(pg.facilities.length / 2))
-                          .map((facility, idx) => (
-                            <div
-                              key={facility}
-                              className="group flex items-center gap-3 p-3 px-4 rounded-lg bg-gradient-to-r from-[var(--bgPrimary)] to-white border-2 border-[var(--primary)]/20 hover:border-[var(--primary)] hover:shadow-md transition-all duration-300 hover:-translate-y-1 cursor-pointer whitespace-nowrap"
-                              style={{ animationDelay: `${idx * 0.05}s` }}
-                            >
-                              <div className="text-lg group-hover:scale-125 transition-transform flex-shrink-0">
-                                ✓
-                              </div>
-                              <span className="text-dark/80 group-hover:text-dark font-semibold text-sm">
-                                {facility}
-                              </span>
-                            </div>
-                          ))}
-                      </div>
-
-                      {/* Row 2 - if more than half */}
-                      {pg.facilities.length > 1 && (
-                        <div className="flex gap-3">
-                          {pg.facilities
-                            .slice(Math.ceil(pg.facilities.length / 2))
-                            .map((facility, idx) => (
-                              <div
-                                key={facility}
-                                className="group flex items-center gap-3 p-3 px-4 rounded-lg bg-gradient-to-r from-[var(--bgPrimary)] to-white border-2 border-[var(--primary)]/20 hover:border-[var(--primary)] hover:shadow-md transition-all duration-300 hover:-translate-y-1 cursor-pointer whitespace-nowrap"
-                                style={{
-                                  animationDelay: `${
-                                    (Math.ceil(pg.facilities.length / 2) +
-                                      idx) *
-                                    0.05
-                                  }s`,
-                                }}
-                              >
-                                <div className="text-lg group-hover:scale-125 transition-transform flex-shrink-0">
-                                  ✓
-                                </div>
-                                <span className="text-dark/80 group-hover:text-dark font-semibold text-sm">
-                                  {facility}
-                                </span>
-                              </div>
-                            ))}
+                  {/* Horizontal Scrollable Facilities on Desktop, Grid on Mobile */}
+                  <div className="hidden lg:block overflow-x-auto pb-4 -mx-2 px-2 scrollbar-hide">
+                    <div className="flex flex-nowrap gap-3 w-max">
+                      {pg.facilities.map((facility, idx) => (
+                        <div
+                          key={facility}
+                          className="group flex items-center gap-3 p-3 px-4 rounded-lg bg-gradient-to-r from-[var(--bgPrimary)] to-white border-2 border-[var(--primary)]/20 hover:border-[var(--primary)] hover:shadow-md transition-all duration-300 hover:-translate-y-1 cursor-pointer whitespace-nowrap flex-shrink-0"
+                          style={{ animationDelay: `${idx * 0.05}s` }}
+                        >
+                          <div className="text-lg group-hover:scale-125 transition-transform flex-shrink-0">
+                            ✓
+                          </div>
+                          <span className="text-dark/80 group-hover:text-dark font-semibold text-sm">
+                            {facility}
+                          </span>
                         </div>
-                      )}
+                      ))}
                     </div>
                   </div>
 
-                  {/* Visual indicator for scrollable content */}
-                  {pg.facilities.length > 4 && (
-                    <p className="text-xs text-dark/50 mt-2 text-right">
-                      ← Scroll for more →
-                    </p>
-                  )}
+                  {/* Grid layout on Mobile */}
+                  <div className="lg:hidden">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                      {pg.facilities.map((facility, idx) => (
+                        <div
+                          key={facility}
+                          className="group flex items-start gap-2 p-3 rounded-lg bg-gradient-to-r from-[var(--bgPrimary)] to-white border-2 border-[var(--primary)]/20 hover:border-[var(--primary)] hover:shadow-md transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+                          style={{ animationDelay: `${idx * 0.05}s` }}
+                        >
+                          <div className="text-lg group-hover:scale-125 transition-transform flex-shrink-0 pt-0.5">
+                            ✓
+                          </div>
+                          <span className="text-dark/80 group-hover:text-dark font-semibold text-xs sm:text-sm line-clamp-2">
+                            {facility}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -350,13 +327,13 @@ export default function PGDetails() {
                     <p className="text-xs font-bold text-[var(--primary)] uppercase tracking-wider mb-2">
                       📅 Occupancy Type
                     </p>
-                    <div className="flex items-center gap-3">
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                       {getOccupancyIcons().map((icon, i) => (
-                        <span key={i} className="text-2xl">
+                        <span key={i} className="text-2xl flex-shrink-0">
                           {icon}
                         </span>
                       ))}
-                      <p className="font-bold text-dark/90 capitalize">
+                      <p className="font-bold text-dark/90 capitalize text-sm sm:text-base">
                         {pg.allowed_guest_type === "both"
                           ? "Daily & Monthly"
                           : pg.allowed_guest_type}
@@ -369,13 +346,13 @@ export default function PGDetails() {
                     <p className="text-xs font-bold text-[var(--primary)] uppercase tracking-wider mb-2">
                       🍽️ Stay Type
                     </p>
-                    <div className="flex items-center gap-3">
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                       {getStayTypeIcons().map((icon, i) => (
-                        <span key={i} className="text-2xl">
+                        <span key={i} className="text-2xl flex-shrink-0">
                           {icon}
                         </span>
                       ))}
-                      <p className="font-bold text-dark/90 capitalize">
+                      <p className="font-bold text-dark/90 capitalize text-sm sm:text-base">
                         {pg.stay_type === "both"
                           ? "With & Without Food"
                           : pg.stay_type.replace(/_/g, " ")}
@@ -388,13 +365,13 @@ export default function PGDetails() {
                     <p className="text-xs font-bold text-[var(--primary)] uppercase tracking-wider mb-2">
                       🥘 Food Type
                     </p>
-                    <div className="flex items-center gap-3">
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                       {getFoodTypeIcons().map((icon, i) => (
-                        <span key={i} className="text-2xl">
+                        <span key={i} className="text-2xl flex-shrink-0">
                           {icon}
                         </span>
                       ))}
-                      <p className="font-bold text-dark/90 capitalize">
+                      <p className="font-bold text-dark/90 capitalize text-sm sm:text-base">
                         {pg.food_type === "both"
                           ? "Veg & Non-Veg"
                           : pg.food_type}
@@ -430,7 +407,7 @@ export default function PGDetails() {
               Select the sharing type that suits you best
             </p>
           </div>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             {rent_details.map((rent, idx) => (
               <div
                 key={rent.id}
